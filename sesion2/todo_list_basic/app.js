@@ -1,0 +1,29 @@
+(function(angular) {
+angular.module('app', []).controller("MainController",function(){
+	
+	this.tasks=[
+		{name:"Task 1",done:true},
+		{name:"Task 2",done:false},
+	];
+	
+	this.add=function(newtask){
+		console.log('adding task '+ newtask.name)
+		var task={};
+		task.name=newtask.name;
+		task.done=false;
+		this.tasks.push(task);
+		newtask.name="";
+	};
+	
+	this.delete=function(task){
+		console.log('deleting task '+ task.name)
+		for(var i=0;i<this.tasks.length;i++){
+			if(this.tasks[i].name==task.name){
+				this.tasks.splice(i,1);
+				break;
+			}
+		}
+	};
+	
+})
+}(angular));

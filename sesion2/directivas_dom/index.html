@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="miApp">
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <p>Mostrar?:<input type="checkbox" ng-model="visible"></p>
+    <p>visible:{{visible}}</p>
+    <p ng-show="visible==true">Mi nombre es:{{nombre}}</p>
+    
+  </body>
+
+</html>

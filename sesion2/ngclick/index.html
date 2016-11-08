@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="miApp">
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <p>Escribe aqui mi nombre:<input ng-model="nombre"></p></p>
+    <p>Mi nombre completo es: {{getNombreCompleto()}}</p>
+    <p><button ng-click="nombre='Juan'">Cambiar nombre a Juan</button></p>
+  </body>
+
+</html>

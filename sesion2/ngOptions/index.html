@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="miApp">
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <p>
+      Selecciona un usuario:
+      <select ng-model="usuarioSeleccionado" 
+	  ng-options="usuario.nombre + ' ' + usuario.ape1 for usuario in usuarios" >
+        <option value="">-- Selecciona un usuario --</option>
+      </select>
+    </p>
+    <p>
+      El usuario seleccionado es: {{usuarioSeleccionado.nombre}}  {{usuarioSeleccionado.ape1}}
+    </p>
+  </body>
+
+</html>

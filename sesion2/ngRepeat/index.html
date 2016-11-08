@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="miApp">
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+      </tr>
+      <tr ng-repeat="usuario in usuarios">
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.ape1}}</td>
+      </tr>
+    </table>
+    
+  </body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="app/controllers/myApp.js"></script>
+<meta charset="UTF-8">
+<title>Practicas de angular</title>
+</head>
+<body ng-app="MyApp">
+	<div>
+		<div ng-controller="MyAppCrtl">
+			<h1>{{message}}</h1>
+			<input type=text ng-model="message"/>
+			<button type="submit" ng-click="showMessage(message)">Envia mensaje</button>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="miApp">
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <p>Texto: <input ng-model="texto" type="text"  /></p>
+    <p>typeof texto={{typeof(texto)}}</p>
+    <p>valor:{{texto}}</p>
+    <p>isNull:{{texto==null}}</p>
+    <hr />
+    
+    <p>Entero: <input ng-model="entero" type="number" /></p>
+    <p>typeof entero={{typeof(entero)}}</p>
+    <p>valor:{{entero}}</p>
+    <p>isNull:{{entero==null}}</p>
+    <hr />
+    
+    <p>Decimal:<input ng-model="decimal" type="number" /></p>
+    <p>typeof numero={{typeof(decimal)}}</p>
+    <p>valor:{{decimal}}</p>
+    <p>isNull:{{decimal==null}}</p>
+    <hr />
+    
+    <p>Booleano:<input  ng-model="bool" type="checkbox" /></p>
+    <p>typeof bool={{typeof(bool)}}</p>
+    <p>valor:{{bool}}</p>
+    <p>isNull:{{bool==null}}</p>
+    <hr />
+    
+    <p>Fecha:<input ng-model="fecha"  /></p>
+    <p>typeof fecha={{typeof(fecha)}}</p>
+    <p>fecha instanceOf&nbsp;&nbsp;Date={{instanceOfDate(fecha)}}</p>
+    <p>valor:{{fecha | date:'dd/MM/yyyy' }}</p>
+    <p>isNull:{{fecha==null}}</p>
+    
+  </body>
+
+</html>
