@@ -10,12 +10,12 @@
     <p>
       Selecciona un usuario:
       <select ng-model="usuarioSeleccionado" 
-	  ng-options="usuario.nombre + ' ' + usuario.ape1 for usuario in usuarios" >
+	  ng-options="usuario.nombre + ' ' + usuario.apellidos for usuario in listaUsuarios" >
         <option value="">-- Selecciona un usuario --</option>
       </select>
     </p>
     <p>
-      El usuario seleccionado es: {{usuarioSeleccionado.nombre}}  {{usuarioSeleccionado.ape1}}
+      El usuario seleccionado es: {{usuarioSeleccionado.nombre}}  {{usuarioSeleccionado.apellidos}}
     </p>
   </body>
 

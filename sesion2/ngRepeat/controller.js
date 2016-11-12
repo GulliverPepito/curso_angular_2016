@@ -1,27 +1,24 @@
-var app = angular.module('miApp', []);
-
 app.controller('MainCtrl', function($scope) {
-  $scope.listaUsuarios = [
+  $scope.usuarios = [
     {
       idUsuario:34,
       nombre:"Juan",
-      apellidos:"Gonzalez"
+      ape1:"Gonzalez"
     },
     {
       idUsuario:46,
       nombre:"Ana",
-      apellidos:"Morales"
+      ape1:"Morales"
     },
     {
       idUsuario:62,
       nombre:"Sara",
-      apellidos:"Diaz"
+      ape1:"Diaz"
     },
     {
       idUsuario:18,
       nombre:"Marcos",
-      apellidos:"Ortega"
+      ape1:"Ortega"
     } 
   ]
-  $scope.usuarioSeleccionado=null;
 });

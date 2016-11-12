@@ -9,6 +9,10 @@ app.controller('MainCtrl', function($scope) {
     return $scope.ape1 + "," + $scope.nombre;
   };
   
+  $scope.changeNombre=function(name) {
+    $scope.nombre = name;
+  };
+  
   
   
 });

@@ -4,22 +4,22 @@
 </head>
 <body ng-app="switchApp">
 
-  <div ng-controller="MainCtrl as mainCtrl">
+  <div ng-controller="MainCtrl">
     <h3>Conditional Elements in HTML</h3>
-    <button ng-click="mainCtrl.currentTab = 'tab1'">
+    <button ng-click="currentTab = 'tab1'">
       Tab 1
     </button>
-    <button ng-click="mainCtrl.currentTab = 'tab2'">
+    <button ng-click="currentTab = 'tab2'">
       Tab 2
     </button>
-    <button ng-click="mainCtrl.currentTab = 'tab3'">
+    <button ng-click="currentTab = 'tab3'">
       Tab 3
     </button>
-    <button ng-click="mainCtrl.currentTab = 'something'">
+    <button ng-click="currentTab = 'something'">
       Trigger Default
     </button>
 
-    <div ng-switch="mainCtrl.currentTab">
+    <div ng-switch="currentTab">
       <div ng-switch-when="tab1">
         Tab 1 is selected
       </div>
@@ -38,9 +38,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
   <script type="text/javascript">
     angular.module('switchApp', [])
-        .controller('MainCtrl', [function() {
-          this.currentTab = 'tab1';
-        }]);
+        .controller('MainCtrl', function($scope) {
+          $scope.currentTab = 'tab1';
+        });
   </script>
 </body>
 </html>
