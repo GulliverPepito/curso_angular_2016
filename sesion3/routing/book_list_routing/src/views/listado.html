@@ -1,0 +1,28 @@
+<div ng-controller="LibrosCtrl">
+	<div>
+		Numero libros eliminados: {{numLibrosDelete}}
+		Numero libros nuevos: {{numLibrosAdd}}
+		<h2>Buscador</h2>
+		<p>Titulo: <input type="text" ng-model="searchData.titulo" /></p>
+		<p>Autor: <input type="text" ng-model="searchData.autor" /></p>
+		<p><input type="checkbox" ng-model="exacta">búsqueda exacta</p>
+		<p>Ordenar por
+			<select ng-model="ordenar">
+				<option value="titulo">Por titulo</option>
+				<option value="autor">Por Autor</option>
+			</select>
+			<select ng-model="ordenarTipo">
+				<option value="false">ascendente</option>
+				<option value="true">descendente</option>
+			</select>
+
+
+		<ul>
+			<li  ng-repeat="libro in libros | filter:searchData:exacta | orderBy:ordenar:ordenarTipo">
+				<a href="#/ficha-libro/{{libro.titulo}}">{{($index+1)+". "+libro.titulo +" - "+ libro.autor}}</a>
+				<a href="" ng-click="deleteLibro($index)">[eliminar]</a>
+			</li>
+		</ul>
+	</div>
+	
+</div>

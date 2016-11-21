@@ -3,21 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <script
-src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+src="angular.js"></script>
 </head>
 <script src="app.js"></script>
-<body ng-app="app" ng-controller="MainController as main">
+<body ng-app="app" ng-controller="MainController">
 <h1>ToDo list</h1>
-Search for:<input type="text" ng-model="searchfor" />
+Search for:<input type="text" ng-model="search" />
 <form>
 <h3>New Task:</h3>
 <input type="text" ng-model="newtask.name" />
-<input type="submit" ng-click="main.add(newtask)" value="Add Task" />
+<input type="submit" ng-click="add(newtask)" value="Add Task" />
 </form>
-<div ng-repeat="task in main.tasks | filter:searchfor">
+<div ng-repeat="task in tasks | searchTask:search ">
 <table>
-<tr ng-hide="task.done">
-<td><input type="checkbox" ng-model="task.done" ng-click="main.delete(task)" /></td>
+<tr>
 <td>{{task.name}}</td>
 </tr>
 </table>

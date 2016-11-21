@@ -1,0 +1,20 @@
+<html ng-app>
+    <body>
+        <div ng-init="libros = 
+        [
+            {titulo:'El Juego de Ender', autor:'Orson Scott Card'},
+            {titulo:'Juego de Tronos', autor:'George R.R. Martin'},
+            {titulo:'I robot', autor:'Isaac Asimov'}
+        ]">
+
+             <h1>Listado de libros</h1>
+             Nombre: <input type="text" ng-model="nombre" />
+
+            <ul>
+                   <li ng-repeat="libro in libros | filter:nombre | orderBy:'autor'">{{ libro.titulo | uppercase }} - {{ libro.autor}}</li>
+            </ul>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js">
+    </script>
+    </body>
+</html>

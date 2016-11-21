@@ -1,0 +1,23 @@
+<div class="navbar navbar-default" role="navigation">
+ 	<div class="navbar-header">
+    	<a class="navbar-brand" href="#">{{barra.name}}</a>
+  	</div>
+
+  	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  		<div ng-repeat="menu in barra.menus">
+    		<ul class="nav navbar-nav">
+      			<li id="{{menu.id}}" class="dropdown">
+        			<a class="dropdown-toggle" data-toggle="dropdown">{{menu.name}} <b class="caret"></b></a>
+        			<ul class="dropdown-menu">
+          				<li ng-repeat="option in menu.options"><a href="{{option.href}}">{{option.name}}</a></li>
+        			</ul>
+      			</li>
+    		</ul>
+    	</div>
+  	</div><!-- /.navbar-collapse -->
+ </div>
+ 
+ <div class="jumbotron">
+        <h1>Curso basico de angularjs</h1>
+        <p>Este es un ejemplo de aplicacion orientada a estados</p>
+</div>

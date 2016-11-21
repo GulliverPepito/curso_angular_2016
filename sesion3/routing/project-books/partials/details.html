@@ -1,0 +1,34 @@
+<a href="#/books/list">Volver</a>
+<form name="form" novalidate>
+  <fieldset>
+    <legend>Book</legend>
+      <label for="isbn">ISBN:</label><input id="isbn" name="isbn" type="text" ng-model="book.isbn" required ng-pattern="/(^[X-Z]\d{7}[A-Z]$)|(^\d{8}[A-Z]$)/" />
+      <span ng-show="form.isbn.$error.required && form.isbn.$dirty">El campo es requerido</span>
+      <span ng-show="form.isbn.$error.pattern">No cumple la expresi&oacute;n regular</span>
+      <br>
+      <label for="name">Name:</label><input id="name" name="name" type="text" ng-model="book.name" required />
+      <span ng-show="form.name.$error.required && form.name.$dirty">El campo es requerido</span>
+      <br>
+      <label for="editorial">Editorial:</label><input id="editorial" name="editorial" type="text" ng-model="book.editorial" required />
+      <span ng-show="form.editorial.$error.required && form.editorial.$dirty">El campo es requerido</span>
+      <br>
+	  <label for="date">Date:</label>
+	  <input id="date" name="date" type="text" ng-model="book.date" required 
+	  datepicker="dd/mm/yy" />
+      <span ng-show="form.date.$error.required && form.date.$dirty">El campo es requerido</span>
+      <br>
+     </fieldset>
+
+  <fieldset>
+    <legend>Type</legend>
+      <label for="science">science:</label><input id="science" name="science" type="checkbox" ng-model="book.type.science" /><br>
+      <label for="technical">technical:</label><input id="technical" name="technical" type="checkbox" ng-model="book.type.technical" /><br>
+	  <label for="literature">literature:</label><input id="literature" name="literature" type="checkbox" ng-model="book.type.literature" /><br>
+   </fieldset>      
+  <fieldset>
+  
+  <button ng-click="guardar()" ng-disabled="form.$invalid">Guardar</button>
+  
+</form>
+
+<a href="#/books/list">Volver</a>

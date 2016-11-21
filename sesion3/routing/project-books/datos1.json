@@ -1,0 +1,12 @@
+{
+  "idBook": 1,
+  "isbn": "12345678Z",
+  "editorial": "Editorial",
+  "name": "AngularJS",
+  "date": "01/01/2016",
+  "type": {
+    "science": true,
+    "technical": true,
+    "literature": false
+  }
+}

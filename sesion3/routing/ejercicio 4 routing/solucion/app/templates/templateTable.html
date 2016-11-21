@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-md-4">
+		<label for="filtro">Filtrado de directores: </label>
+	</div>
+	<div class="col-md-4">
+		<input id="filtro" type="text" ng-model="tablaInfo.filtrado"/>
+	</div>
+	<div class="col-md-4">
+		<button type="button" ng-click="tablaInfo.changeCaps()" class="{{tablaInfo.styleButton}}">Mayusculas</button>
+	</div>
+	<div class="col-md-12">
+		<br/>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="director in tablaInfo.data|DirectorFilter:tablaInfo.filtrado">
+					<td>{{director.nombre|ChangeCaps:tablaInfo.caps}}</td>
+					<td>{{director.apellidos|ChangeCaps:tablaInfo.caps}}</td>
+					<td><button type="submit" ng-click="tablaInfo.seleccionar(director)">seleccionar</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

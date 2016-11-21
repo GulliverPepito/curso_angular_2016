@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="exampleApp">
 <head>
     <title>Example</title>
@@ -7,12 +7,12 @@
     <link href="bootstrap.css" rel="stylesheet" />
     <link href="bootstrap-theme.css" rel="stylesheet" />
 </head>
-<body ng-controller="defaultCtrl">
+<body ng-controller="defaultCtrl as ctrl">
     <div class="panel panel-default">
         <div class="panel-body">
             <p>Counter: {{counter}}</p>
             <p>
-                <button class="btn btn-primary" ng-click="incrementCounter()">Increment</button>
+                <button class="btn btn-primary" ng-click="ctrl.incrementCounter()">Increment</button>
             </p>
         </div>
     </div>

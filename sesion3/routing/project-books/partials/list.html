@@ -1,0 +1,30 @@
+
+Filtrar por nombre:<input ng-model="filtro.name" >
+
+<table>
+  <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Name</th>
+      <th>Editorial</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td colspan="3">Books length:</td>
+      <td ng-bind="books.length"></td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr ng-repeat="book in books| filter:filtro.name" ng-style="{color:($odd?'red':'green')}">
+      <td><a ng-href="#/book/edit/{{book.idBook}}">{{book.isbn}}</a></td>
+      <td>{{book.name}}</td>
+      <td>{{book.editorial}}</td>
+	  <td ng-show="book.type.science">Science</td>
+	  <td ng-show="book.type.technical">Technical</td>
+	  <td ng-show="book.type.literature">Literature</td>
+    </tr>
+  </tbody>
+</table>
+

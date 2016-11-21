@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body ng-app="myApp">
+		<form name="form" ng-submit="enviar()" ng-controller="myController">
+			<input type="text" name="name" ng-model="model.name" ng-required="true" ng-minlength="5" ng-maxlength="10" />
+			<div ng-messages="form.name.$error">
+				<div ng-message="required">Campo requerido</div>
+				<div ng-message="minlength">La longitud del campo no puede ser menor que 5</div>
+				<div ng-message="maxlength">La longitud del campo no puede ser mayor de 10</div>
+			</div>
+			<button type="submit">Enviar</button>
+		</form>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script src="https://code.angularjs.org/1.5.8/angular-messages.js"></script>
+		<script src="myApp.js"></script>
+		<script src="myController.js"></script>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "HolaMundo",
+  "version": "0.0.1",
+  "description": "Website to test the libraries of architecture thin",
+  "devDependencies": {
+    "angular": "1.5.8",
+	"angular-ui-router":"1.5.8"
+  }
+}

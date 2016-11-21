@@ -1,0 +1,6 @@
+<h2>Lista de peliculas</h2>
+<ul>
+  <li ng-repeat="peli in peliculas track by $index">
+    <a href="#/detalle/{{$index}}">{{peli}}</a>
+  </li>
+</ul>

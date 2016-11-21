@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<script src="app.js"></script>
+
+<body ng-app="app">
+
+<h1>Form validation</h1>
+<form ng-controller="FormController as formCtrl" name="form" ng-submit="formCtrl.submitForm()" novalidate>
+<div>
+<h3>Name:</h3>
+<input type="text" name="user" ng-model="user" ng-minlength=4 ng-maxlength=10 required/>
+<!--validate username-->
+<span style="color:#FF9900" ng-show="form.user.$dirty && form.user.$invalid">
+<span ng-show="form.user.$error.required">
+You must enter a username
+</span>
+<p ng-show="form.user.$invalid && form.user.$dirty">User is required</p>
+
+    
+<span ng-show="form.user.$error.minlength">
+Username is too short.Introduce at least 4 chars
+</span>
+<span ng-show="form.user.$error.maxlength">
+Username is too long.Introduce 10 chars max.
+</span>
+</span>
+</div>
+
+
+<div>
+<h3>Age:</h3>
+<input type="number" name="age" ng-model="userAge" required/>
+<!--validate age-->
+<span style="color:#FF9900" ng-show="form.age.$dirty && form.age.$invalid">
+<span ng-show="form.age.$error.required">
+You must enter a age
+</span>
+<span ng-show="form.age.$error.number">
+Age must be a number
+</span>
+</span>
+</div>
+
+<input type="submit" name="submit" value="Submit" 
+ng-disabled="form.user.$invalid || form.age.$invalid" />
+
+</form>
+
+
+</body>
+</html>

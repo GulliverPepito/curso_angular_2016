@@ -12,8 +12,8 @@
             <li ng-repeat="category in categories">{{category}}</li>
         </ul>
 
-        <ul>
-            <li ng-repeat="bookmark in bookmarks">
+        <ul ng-repeat="bookmark in bookmarks">
+            <li>
                 <p>
                     <a href="{{bookmark.url}}">{{bookmark.name}}</a><br/>
                     <small>{{bookmark.url}}</small>

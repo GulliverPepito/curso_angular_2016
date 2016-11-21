@@ -1,0 +1,17 @@
+<html ng-app="uazonApp">
+	<body>
+		
+		<div>
+			<a href="#/listado">Listado libros</a>
+			<a href="#/nuevo-libro">Añadir libro</a>
+		</div>
+
+		<div ng-view>
+		</div>
+
+	<script src="src/lib/angular.min.js"></script>
+	<script src="src/lib/angular-route.min.js"></script>
+	<script src="src/app.js"></script>
+	<script src="src/controllers/LibrosCtrl.js"></script>
+	</body>
+</html>

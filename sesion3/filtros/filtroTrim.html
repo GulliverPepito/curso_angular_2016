@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="filtros">
+
+<head>
+    <meta charset="utf-8">
+    <title>Filtros Trim</title>
+</head>
+
+<body>
+	<input type="text" ng-init="texto=''" ng-model="texto"/>
+	
+    <div>{{ texto |filtro}}</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js">
+    </script>
+
+    <script>
+        var filtroApp = angular.module('filtros', [])
+		
+         filtroApp.filter('filtro', function () {
+            
+            return function (input) {
+                console.log(input.split(' ').join(''))
+                return input.split(' ').join('');
+            };
+
+             
+        });
+    </script>
+</body>
+
+</html>

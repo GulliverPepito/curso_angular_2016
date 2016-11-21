@@ -4,5 +4,8 @@
   "description": "Website to test the libraries of architecture thin",
   "devDependencies": {
     "angular": "1.5.8"
+  },
+  "dependencies": {
+    "angular-route": "~1.5.8"
   }
 }
