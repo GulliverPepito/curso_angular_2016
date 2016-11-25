@@ -13,10 +13,11 @@
             {id:2,name:'Html5 Game Devs',url:'https://html5gamedevs.com',category:'Games'},
             {id:3,name:'CSS Tricks',url:'http://css-tricks.com',category:'CSS'},
             {id:4,name:'Bootstrap',url:'http://getbootstrap.com',category:'CSS'},
-            {id:5,name:'Card',url:'http://jessepollak.github.io/card/',category:'JavaScript'}
+            {id:5,name:'Card',url:'http://jessepollak.github.io/card/',category:'JavaScript'},
+ 	    {id:6,name:'HTML',url:'http://www.w3c.es/',category:'HTML5'}
         ];
 
-        $scope.currentCategory = 'JavaScript';
+        $scope.currentCategory = '';
 
         $scope.setCurrentCategory = function(category){
             $scope.currentCategory = category;

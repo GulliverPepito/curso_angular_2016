@@ -17,7 +17,7 @@
           <label> buscar </label>
           <input type="search" ng-model="busqueda" >
           
-          <p ng-repeat = " entrada in agenda | filter: busqueda  ">
+          <p ng-repeat = " entrada in agenda | filtroBusqueda:busqueda  ">
               {{ entrada.nombre }} :  {{ entrada.telefono }}
           </p>
              
@@ -48,6 +48,22 @@
              
           
           } ] )
+	.filter('filtroBusqueda', function(){
+		return function(input,search) {
+		var array=[];
+		for(var i=0;i<input.length;i++){
+			
+			if(search==input[i].nombre){
+				array.push(input[i]);
+			
+			}
+			
+		}
+	if(array.length>0){
+		return array;
+	}
+	return input;
+	}})
           
       
       </script>

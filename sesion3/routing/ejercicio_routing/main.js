@@ -2,24 +2,26 @@
 var angularRoutingApp = angular.module('angularRoutingApp', ['ngRoute']);
 
 // Configuración de las rutas
-angularRoutingApp.config(function($routeProvider) {
+angularRoutingApp.config(function($routeProvider,$locationProvider) {
 
 	$routeProvider
 		.when('/', {
-			templateUrl	: 'pages/home.html',
+			templateUrl	: '/ejercicio_routing/pages/home.html',
 			controller 	: 'mainController'
 		})
 		.when('/acerca', {
-			templateUrl : 'pages/acerca.html',
+			templateUrl : '/ejercicio_routing/pages/acerca.html',
 			controller 	: 'aboutController'
 		})
 		.when('/contacto', {
-			templateUrl : 'pages/contacto.html',
+			templateUrl : '/ejercicio_routing/pages/contacto.html',
 			controller 	: 'contactController'
 		})
 		.otherwise({
 			redirectTo: '/'
 		});
+
+	$locationProvider.html5Mode(true);
 });
 
 

@@ -12,7 +12,7 @@
     Amount - Default Currency: {{ctrl.amount | currency}}
   </li>
   <li>
-    Amount - INR Currency: {{ctrl.amount | currency:'INR'}}
+    Amount - EUR Currency: {{ctrl.amount | currency:'EUR':0}}
   </li>
 
   <li>
@@ -58,7 +58,7 @@
   angular.module('filtersApp', [])
     .controller('FilterCtrl', [function() {
       this.amount = 1024;
-      this.name = 'Shyam Seshadri';
+      this.name = 'angularJS';
       this.obj = {test: 'value', num: 123};
       this.startTime = new Date().getTime();
     }]);

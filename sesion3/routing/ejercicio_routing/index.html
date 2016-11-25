@@ -3,15 +3,16 @@
 <html ng-app='angularRoutingApp'>
 <head>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+  <base href="/"></base>
 </head>
 <body ng-controller='mainController'>
 	<header>
 		<h1>Angular Routing</h1>
 		<nav>
 			<ul>
-				<li><a href="#">Inicio</a></li>
-				<li><a href="#acerca">Acerca de</a></li>
-				<li><a href="#contacto">Contacto</a></li>
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/acerca">Acerca de</a></li>
+				<li><a href="/contacto">Contacto</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -23,6 +24,6 @@
 
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
   	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
-  	<script src="main.js"></script>
+  	<script src="/ejercicio_routing/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+<div ng-if="!details">
+	No existe ningún usuario para este identificador.
+</div>
+<div ng-if="details">
+	<div>
+		{{details.firstName}} {{details.lastName}}
+	</div>
+	<div>
+		{{details.job}}
+	</div>
+	<div>
+		{{details.details}}
+	</div>
+</div>

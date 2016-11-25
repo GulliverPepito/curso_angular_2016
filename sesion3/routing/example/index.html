@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+    </head>
+    <body ng-app="MiAplicacion">
+    	<div ng-view></div>
+
+        <script type="text/javascript">
+        	var data = [{
+        		id: 0,
+        		firstName: "firstname",
+        		lastName: "lastname",
+        		job: "Dev",
+        		details: "Este es el detalle de firstname."
+        	}, {
+        		id: 1,
+        		firstName: "newfirstname",
+        		lastName: "newlastname",
+        		job: "Techlead",
+        		details: "Este es el detalle de newfirstname."
+        	}];
+			
+			function MainController($scope) {
+				$scope.users = data;
+			};
+
+			function DetailsController($scope, $routeParams) {
+				// Recuperar la información en función del id
+				var details = data[$routeParams.userId];
+				if(!details) {
+					$scope.noDetails = true;
+				}
+				
+				$scope.details = details;
+			};
+
+			var module = angular.module("MiAplicacion", ["ngRoute"]);
+			module.config(function($routeProvider) {
+				$routeProvider
+				.when("/", {
+					templateUrl: "home.html",
+					controller: "MainController"
+				})
+				.when("/details/:userId", {
+					templateUrl: "detalles.html",
+					controller: "DetailsController"
+				})
+				.otherwise({
+					redirectTo: "/"
+				});
+			});
+			module.controller("MainController", MainController)
+				  .controller("DetailsController", DetailsController);
+        </script>
+    </body>
+</html>

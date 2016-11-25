@@ -1,0 +1,38 @@
+<html ng-app="ejemploLista">
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    </head>
+    <body ng-controller="RepeatController">
+		<div>
+			Filtro: <input type="text" ng-model="query" /> <br/>
+			Orden:  <select ng-model="order">
+						<option value="name">Nombre</option>
+						<option value="value">Valor</option>
+					</select> <br/>
+			Límite: <input type="text" ng-model="quantity" />
+		</div>
+		<ul>
+			<li ng-repeat="item in items | filter:query | limitTo:quantity | orderBy:order">
+				{{item.name}}
+			</li>
+		</ul>
+		
+        <script type="text/javascript">
+            function RepeatController($scope) {
+				$scope.quantity = 4;
+				$scope.order = "name";
+				$scope.query = "";
+				
+				$scope.items =  [
+					{name: "item1", value: 4},
+					{name: "item2", value: 7},
+					{name: "item3", value: 4},
+					{name: "item4", value: 7},
+					{name: "item5", value: 7}
+				];
+			}
+			
+			angular.module("ejemploLista", []).controller("RepeatController", RepeatController);
+        </script>
+    </body>
+</html>
