@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    </head>
+    <body ng-app="MiAplicacion" ng-controller="MainController">
+		<button ng-click="addEmployee()">Agregar empleado</button>
+		<form name="employeesForm" novalidate ng-submit="employeesForm.$valid && submitEmployees()">
+			<div class="employee" ng-repeat="employee in employees" ng-form="employeeForm">
+				<label for="nombre">
+					Nombre:
+					<input name="nombre" ng-model="employee.nombre" required="required">
+				</label>
+				<span ng-show="employeesForm.$submitted && employeeForm.nombre.$invalid">
+					Debe informar un nombre.
+				</span>
+				<label for="apellido">
+					Apellido:
+					<input name="apellido" ng-model="employee.apellido" required="required">
+				</label>
+				<span ng-show="employeesForm.$submitted && employeeForm.apellido.$invalid">
+					Debe informar un apellido.
+				</span>
+				<label for="fecha">
+					Fecha:
+					<input name="fecha" ng-model="employee.fecha" type="date" required="required">
+				</label>
+				<span ng-show="employeesForm.$submitted && employeeForm.fecha.$invalid">
+					Debe informar una fecha v&aacute;lida.
+				</span>
+				<button ng-click="removeEmployee(employee)">Eliminar</button>
+			</div>
+			<input type="submit" value="Validar">
+		</form>
+        <script type="text/javascript">
+			angular.module("MiAplicacion", [])
+				.controller("MainController", function($scope) {
+					$scope.employees = [];
+					$scope.addEmployee = function() {
+						$scope.employees.push({});
+					}
+
+					$scope.removeEmployee = function(employee) {
+						var index = $scope.employees.indexOf(employee);
+						$scope.employees.splice(index, 1);
+					}
+
+					$scope.submitEmployees = function() {
+						alert("Formulario ok");
+					};
+				});
+        </script>
+    </body>
+</html>

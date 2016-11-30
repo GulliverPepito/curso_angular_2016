@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
+
+<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/bootstrap/ui-bootstrap-tpls-0.11.2.min.js"></script>
+<script src="app/services/DirectorService.js"></script>
+<script src="app/filters/DirectorFilter.js"></script>
+<script src="app/controllers/myApp.js"></script>
+<meta charset="UTF-8">
+<title>Practicas de angular</title>
+</head>
+<body ng-app="MyApp">
+	<div>
+		<div ng-controller="MyAppCrtl">
+			<div class="row">
+			<div class="col-md-4">
+			<label for="filtro">Filtrado de directores: </label>
+			</div>
+			<div class="col-md-4">
+				<input id="filtro" type="text" ng-model="filtrado"/>
+			</div>
+			<div class="col-md-4">
+				<button type="button" ng-click="changeCaps()" class="{{styleButton}}">Mayusculas</button>
+			</div>
+				<div class="col-md-12">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellidos</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="director in directores|DirectorFilter:filtrado">
+								<td>{{director.nombre|ChangeCaps:caps}}</td>
+								<td>{{director.apellidos|ChangeCaps:caps}}</td>
+								<td><button type="submit" ng-click="seleccionar(director)">seleccionar</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-6">
+					<br/><br/>
+					<input type="text" ng-model="seleccionado.nombre"/>
+				</div>
+				<div class="col-md-6">
+					<br/><br/>
+					<input type="text" ng-model="seleccionado.apellidos"/>
+				</div>
+				<div class="col-md-6">
+					<br/><br/>
+					<button type="submit" ng-click="save(seleccionado)">Guardar</button>
+				</div>
+				<div class="col-md-6">
+					<br/><br/>
+					<button type="submit" ng-click="remove(seleccionado)">Borrar</button>
+					<button type="submit" ng-click="clean(seleccionado)">Limpiar</button>
+				</div>
+			</div>			
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="app22">
+
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS lesson22</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js"></script>
+</head>
+
+<body>
+  <div ng-controller="Controller">
+{{name}}
+    <!--Display the details with Dynamic content handler-->
+    <table class="table forum table-striped">
+      <thead>
+        <tr>
+          <th>
+          </th>
+          <th class="cell-stat text-center ">Model</th>
+          <th class="cell-stat text-center ">Status</th>
+          <th class="cell-stat-2x ">Purchase on</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="peoples in ObjectArray">
+          <td>
+            <h4>
+                <a href="#">{{peoples.name}}</a>
+                <br />
+                <small>{{peoples.email}}</small>
+              </h4>
+          </td>
+          <td class="text-center ">
+            <a href="#">{{peoples.model}}</a>
+          </td>
+          <td class="text-center ">
+            <a href="#">{{peoples.status}}</a>
+          </td>
+          <td>
+            <small>{{peoples.purchasedate}}</small>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </body>
+
+</html>

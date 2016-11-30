@@ -6,9 +6,9 @@
     </head>
     <body ng-app="directivas">
         
-        <usuario nombre="admin" password="admin"> </usuario>
+        <div usuario-directiva nombre="admin" password="admin"> </div>
         
-        
+        <div usuario-directiva nombre="user" password="password"> </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js">
         </script>
@@ -16,7 +16,7 @@
         <script>
                 var directivaApp = angular.module('directivas', []);
             
-                directivaApp.directive('usuario', function() {
+                directivaApp.directive('usuarioDirectiva', function() {
                     
                     var valoresInternos = {};
 
@@ -26,7 +26,7 @@
                         passwordUsuario: '@password'
                     }
                     
-                    valoresInternos.restrict = 'E';
+                    valoresInternos.restrict = 'A';
                     valoresInternos.template = "¡Bienvenido {{nombreUsuario}} {{passwordUsuario}}!";
 
                     return valoresInternos;

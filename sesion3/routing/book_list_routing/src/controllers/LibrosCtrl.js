@@ -50,5 +50,5 @@ libros.controller("LibrosCtrl",['$scope','$rootScope','$location',
 libros.controller("LibrosFichaCtrl",['$scope','$routeParams',
 	function($scope,$routeParams)
 {
-	$scope.libroId = $routeParams.libroId;
+	$scope.tituloLibro = $routeParams.tituloLibro;
 }]);

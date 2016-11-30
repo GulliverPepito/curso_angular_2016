@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<script src="app.js"></script>
+<body ng-app="myApp">
+	<div>
+	
+		<div ng-controller="ListController">
+			<a href="" ng-repeat="user in users track by user.id" ng-click="selectUser(user)">
+				{{user.first_name}} {{user.last_name}}<br/>
+			</a>
+		</div>
+		
+		<div class="page-details" ng-controller="DetailsController">
+			<div ng-if="!currentUser" class="panel">
+				<p>You have not selected an employee</p>
+			</div>
+			<div ng-if="currentUser" class="panel row">
+				<div class="col-md-8">
+					<p><strong>Name:</strong>{{currentUser.first_name}} {{currentUser.last_name}}</p>
+					<p><strong>Email:</strong>{{currentUser.email}}</p>
+					<p><strong>Company:</strong>{{currentUser.company}}</p>
+				</div>
+			</div>
+		</div>
+		
+	
+	</div>
+
+</body>
+</html>

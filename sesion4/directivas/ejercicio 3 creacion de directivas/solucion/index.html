@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
+
+<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/bootstrap/ui-bootstrap-tpls-0.11.2.min.js"></script>
+<script src="app/services/DirectorService.js"></script>
+<script src="app/filters/DirectorFilter.js"></script>
+<script src="app/directives/tableDirective.js"></script>
+<script src="app/controllers/myApp.js"></script>
+<meta charset="UTF-8">
+<title>Practicas de angular</title>
+</head>
+<body ng-app="MyApp">
+	<div>
+		<div ng-controller="MyAppCrtl">
+		<div my-table="" tab-info="tablaDirectores"></div>
+			<div class="row">
+				<div class="col-md-6">
+					<br/><br/>
+					<input type="text" ng-model="seleccionado.nombre"/>
+				</div>
+				<div class="col-md-6">
+					<br/><br/>
+					<input type="text" ng-model="seleccionado.apellidos"/>
+				</div>
+				<div class="col-md-6">
+					<br/><br/>
+					<button type="submit" ng-click="save(seleccionado)">Guardar</button>
+				</div>
+				<div class="col-md-6">
+					<br/><br/>
+					<button type="submit" ng-click="remove(seleccionado)">Borrar</button>
+					<button type="submit" ng-click="clean()">Limpiar</button>
+				</div>
+			</div>			
+		</div>
+	</div>
+</body>
+</html>

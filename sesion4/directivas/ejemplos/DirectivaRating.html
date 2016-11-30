@@ -1,0 +1,78 @@
+<html ng-app="MiApp">
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
+	<style>
+	.rating {
+	  color: darkgray;
+	  padding: 0;
+	  margin: 0;
+	}
+	ul.rating {
+	  display: inline-block;
+	}
+	.rating li {
+	  list-style-type: none;
+	  display: inline-block;
+	  
+	  font-weight: bold;
+	  cursor: pointer;
+	}
+	.rating li.filled {
+	  color: black;
+	}
+	</style>
+  </head>
+
+  <body ng-controller="MainController">
+	<p>Nota : {{rating}}</p>
+	<rating rating-max-value="10" ng-model="rating"></rating>
+	
+	<script type="text/javascript">
+    var module = angular.module('MiApp', []);
+    
+	module.controller("MainController", function($scope) {
+		$scope.rating = 0;
+	});
+	
+    module.directive("rating", function() {
+      return {
+        restrict: "EA",
+        require: 'ngModel',
+		template: '<ul class="rating">' +
+					'<li ng-repeat="note in notes" ng-class="{\'filled\': note.valid}" ng-click="rate($index)">' +
+                      '\u2605' +
+					'</li>' +
+				'</ul>',
+		scope: {
+			ratingMaxValue: '=',
+			ngModel: '='
+		},
+		link: function (scope, elem, attrs, ngModelCtrl) {
+			var updateComponent = function() {
+				scope.notes = [];
+				for (var i = 0; i < scope.ratingMaxValue; i++) {
+					scope.notes.push({valid: i < ngModelCtrl.$modelValue});
+				}
+			};
+			
+			scope.rate = function(index) {
+				for (var  i = 0; i < scope.notes.length; i++) {
+					if(i <= index) {
+						scope.notes[i].valid = true;
+					} else {
+						scope.notes[i].valid = false;
+					}
+				}
+				
+				ngModelCtrl.$setViewValue(index + 1);
+			};
+			
+			scope.$watch('ngModel', function(oldVal, newVal) {
+				updateComponent();
+			});
+		}
+      };
+    });
+  </script>
+  </body>
+</html>

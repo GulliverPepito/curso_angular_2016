@@ -1,0 +1,2 @@
+angular
+  .module("appProbandoComponent", ["myHeader"])

@@ -1,0 +1,50 @@
+[
+  {
+    "name":"Pro AngularJS",
+    "image":"angular1.png",
+    "description":"Pro AngularJS",
+	"editorial":"Apress"
+  },
+  {
+    "name":"AngularJS Web application Development",
+    "image":"angular2.png",
+    "description":"Over 90 hand-ons recipes to architect performant applications and implement best practices in AngularJS",
+	"editorial":"Packt Publishing"
+  },
+  {
+    "name":"Learning AngularJS",
+    "image":"angular3.png",
+    "description":"Learning AngularJS",
+	"editorial":"O really"
+  },
+  {
+    "name":"AngularJS Up & Running",
+    "image":"angular4.png",
+    "description":"Enhanced productivity with structured web apps",
+	"editorial":"O really"
+  },
+  {
+    "name":"AngularJS Directives Cookbook",
+    "image":"angular5.png",
+    "description":"Extend the capabilitieso of AngularJS and build dynamic web applications by creating customized directives with a collection of more than 30 recipes",
+	"editorial":"Packt Publishing"
+  },
+   {
+    "name":"AngularJS Essentials",
+    "image":"angular6.png",
+    "description":"Desing and construct reusable,maintanable and modular web applications with AngularJS",
+	"editorial":"Packt Publishing"
+  },
+  {
+    "name":"AngularJS Directives",
+    "image":"angular7.png",
+    "description":"AngularJS Directives",
+	"editorial":"Packt Publishing"
+  },
+   {
+    "name":"AngularJS Services",
+    "image":"angular8.png",
+    "description":"Desing,build and test services to create a solid foundation",
+	"editorial":"Packt Publishing"
+  }
+]

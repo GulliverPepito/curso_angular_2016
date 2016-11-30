@@ -1,0 +1,77 @@
+<div class="row">
+	
+	<div style="width:100%" class="col-md-12 col-sm-12 col-lg-12">
+		<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Event</th>
+				<th>Description</th>
+				<th>Location</th>
+				<th>Date</th>
+				<th>Email</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="event in eventController.events">
+				<td>{{event.id}}{{event.special}}</td>
+				<td ng-show="!eventController.edit[event.id]" ng-switch on="event.special">
+					<span highlight eventname="{{event.name}}" ng-switch-when="true"></span>
+					<span ng-switch-when="false">{{event.name}}</span>
+				</td>
+				<td ng-show="!eventController.edit[event.id]">{{event.description}}</td>
+				<td ng-show="!eventController.edit[event.id]">{{event.location}}</td>
+				<td ng-show="!eventController.edit[event.id]">{{event.date}}</td>
+				<td ng-show="!eventController.edit[event.id]">{{event.email}}</td>
+				<td ng-show="!eventController.edit[event.id]">
+					<button class="btn btn-primary" ng-click="eventController.edit[event.id]=!eventController.edit[event.id]">
+					Edit</button>
+					<button class="btn btn-danger" ng-click="eventController.delete(event.name);">
+					Delete</button>
+				</td>
+				
+				<td ng-show="eventController.edit[event.id]"><input type="text" ng-model="event.name"></td>
+				<td ng-show="eventController.edit[event.id]"><input type="text" ng-model="event.description"></td>
+				<td ng-show="eventController.edit[event.id]"><input type="text" ng-model="event.location"></td>
+				<td ng-show="eventController.edit[event.id]"><input type="text" ng-model="event.date"></td>
+				<td ng-show="eventController.edit[event.id]"><input type="text" ng-model="event.email"></td>
+				<td ng-show="eventController.edit[event.id]">
+					<button class="btn btn-primary" ng-click="eventController.update(event);eventController.edit[event.id]=!eventController.edit[event.id]">
+					Save</button>
+					<button class="btn btn-warning" ng-click="eventController.edit[event.id]=!eventController.edit[event.id]">
+					Undo</button>
+				</td>
+			</tr>
+		
+		</tbody>
+		</table>
+		
+		<form class="form" role="form" name="deleteForm">
+		
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<label for="eventToDelete" class="control-label">Event to be deleted</label>
+					<input type="text" ng-model="eventToDelete" class="form-control" name="eventToDelete" placeholder="eventName to delete" />
+					
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<button type="button" class="btn btn-primary" ng-click="eventController.delete(eventToDelete)">Delete Event</button>
+				</div>
+			</div>
+		
+		</form>
+		<br/>
+		<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<button type="button" class="btn btn-primary" ng-click="eventController.redirectAddEvent()">Add Event</button>
+				</div>
+		</div>
+		
+	</div>
+</div>	

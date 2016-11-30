@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body ng-app="ytsApp" ng-controller="moviesController" ng-style="background">
+    <div id="container" class="row" >
+      <div class="col-md-9 col-md-offset-2">
+        
+        <div id="loading-div" ng-show="searching">
+          <img src="ring.svg" />
+          <p class="searching">Cargando...</p>
+        </div>
+
+        <!-- Search -->
+        <div class="row" id="search-form" ng-hide="showing_movie_details || searching">
+          <div class="col-md-4 col-md-offset-2">
+            <input type="text" ng-model="searchTerm" class="form-control" placeholder="T&iacute;tulo, actor o director">
+          </div>
+          <div class="col-md-2">
+            <select class="form-control" ng-options="option.name for option in sortByOptions track by option.value" ng-model="sortBy"></select>
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-success glyphicon glyphicon-search" ng-click="searchMovie()"></span>B&uacute;scar</button>
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-default" ng-click="requestMoviesList()"></span>Reset</button>
+          </div>
+        </div>
+        <!-- /Search -->
+
+        <!-- Movies -->
+        <div class="row" ng-hide="showing_movie_details || searching">
+          <h1 id="total-results"><i>{{movie_count}} pel&iacute;culas encontradas</i></h1>
+
+          <div class="col-md-4 movie" ng-repeat="movie in movies" ng-click="showMovieDetails(movie.id)">
+            <img class="thumbnail" src="{{movie.medium_cover_image}}" alt="{{movie.title}}">
+            <p>{{movie.title}}</p>
+          </div> 
+        </div>        
+        
+        <!-- Paginator -->
+        <div class="row" ng-hide="showing_movie_details || total_pages <= 1 || searching">
+          <nav id="paginator">
+            <ul class="pagination">
+              <li ng-class="(page_number <= 1)?'disabled':''">
+                <a aria-label="Previous" ng-click="loadPage(page-1)">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li ng-repeat="page in [] | paginator_range:page_number:total_pages" ng-class="(page==page_number)?'active':''">
+                <a ng-click="loadPage(page)">{{page}}</a>
+              </li>
+              <li ng-class="(page_number >= total_pages)?'disabled':''">
+                <a aria-label="Next" ng-click="loadPage(page+1)">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- /Paginator -->
+
+
+        <!-- Movie Details -->
+        <div class="row" ng-show="showing_movie_details">
+          <div class="col-md-12 movie-details">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="thumbnail" src="{{selected_movie.images.medium_cover_image}}" alt="{{selected_movie.title}}">
+              </div>
+              <div class="col-md-8">
+                <h2 class="title">{{selected_movie.data.title_long}}</h2>
+                <h4 class="rating">IMDb <span class="glyphicon glyphicon-star"></span>{{selected_movie.movie.rating}}</h4>
+                <div>
+                  <span class="label label-success movie-genre" ng-repeat="genre in selected_movie.genres">{{genre}}</span>
+                </div>
+
+                <p class="description-full" style="">{{selected_movie.movie.description_full}}</p>
+                
+                <h5 class="cast">Elenco</h5>
+                <div class="row">
+                  <div class="col-md-3" ng-repeat="actor in selected_movie.actors">
+                    <a href="http://www.imdb.com/name/{{actor.imdb_code}}">
+                      <img class="img-circle" src="{{actor.small_image}}">
+                    </a>
+                    <p style="margin-top: 5px; color:white;">{{actor.name}} como <i>{{actor.character_name}}</i></p>
+                  </div>
+                </div>
+
+                <a class="btn btn-primary" target="_blank" href="https://www.youtube.com/watch?v={{selected_movie.movie.yt_trailer_code}}">
+                <span class="glyphicon glyphicon-film"></span> &nbsp;Watch trailer
+                </a>
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-default glyphicon glyphicon-arrow-left" ng-click="returnToList()">Go Back</button>  
+          </div> 
+        </div>
+        <!-- /Movie Details -->  
+
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+    <script type="text/javascript">
+    app = angular.module('ytsApp', []);
+
+    app.controller('moviesController', ['$scope', '$http', moviesController]);
+
+    function moviesController($scope, $http)
+    {
+      $scope.searchTerm            = '';
+      $scope.sortBy                = {name: "Más recientes", value: "date_added"};
+      $scope.selected_movie        = {};
+      $scope.showing_movie_details = false;
+      $scope.searching             = true;
+      $scope.sortByOptions         = [
+        {name: "Más recientes", value: "date_added"},
+        {name: "Título", value: "title"}, 
+        {name: "Año", value: "year"}, 
+        {name: "Valoración", value:"rating"}
+      ];
+
+       
+
+      $scope.requestMoviesList = function(config){
+        $scope.searching = true;
+
+        var list_movies_base_url = "https://yts.ag/api/v2/list_movies.json";
+
+        config = config || {}; 
+
+        $http.get(list_movies_base_url, config).success(function(response){
+          $scope.movie_count = response.data.movie_count;
+          $scope.page_number = response.data.page_number;
+          $scope.limit       = response.data.limit;
+          $scope.movies      = response.data.movies;
+
+          $scope.total_pages = $scope.movie_count / $scope.limit;
+
+          $scope.searching = false;
+        });
+      };
+
+      $scope.requestMovieDetails = function(movie_id){
+        var movie_details_base_url = "https://yts.ag/api/v2/movie_details.json";
+        var config = { "params": { "movie_id": movie_id, "with_images": true, "with_cast": true } };
+
+        $scope.searching = true;
+
+        $http.get(movie_details_base_url, config).success(function(response){
+          $scope.selected_movie = response.data;
+
+          $scope.background = { 
+            "background": "#171717 url(" + $scope.selected_movie.movie.background_image + ") no-repeat center center fixed", 
+            "background-size": "cover"
+          }
+
+          $scope.searching = false;
+          $scope.showing_movie_details = true;
+        });
+      }
+
+      $scope.loadPage = function(page_number){
+        $scope.requestMoviesList({ "params": { "page": page_number, "query_term": $scope.searchTerm, "sort_by": $scope.sortBy.value } });
+      };
+
+      $scope.searchMovie = function(){
+        $scope.requestMoviesList({ "params": { "query_term": $scope.searchTerm, "sort_by": $scope.sortBy.value } });
+      }
+
+      $scope.clearSearch = function(){
+        $scope.searchTerm = ''; // Remove search term from input text 
+        $scope.sortBy     = {name: "Más recientes", value: "date_added"};
+        $scope.requestMoviesList();
+      }
+
+      $scope.showMovieDetails = function(movie_id){
+        $scope.requestMovieDetails(movie_id);
+      }
+
+      $scope.returnToList = function(){
+        $scope.showing_movie_details = false;
+        $scope.background            = {}; 
+      }
+
+      $scope.requestMoviesList();
+    }
+
+    // Crea rango de 10 poniendo la hoja actual en el medio
+    app.filter('paginator_range', function() {
+      return function(val, current_page, total_pages){
+        current_page = parseInt(current_page);
+        total_pages  = parseInt(total_pages);
+
+        var i = current_page - 5;
+        var l = current_page + 5;
+
+        if(l > total_pages)
+        {
+          i -= l - total_pages;
+          l  = total_pages;
+        }
+
+        if(i < 1)
+        {
+          l += (i*-1);
+          i  = 1;
+        }
+
+        for(;i <= l && i <= total_pages; i++) val.push(i);
+
+
+        return val;
+      };
+    });
+    </script>
+
+
+    <style type="text/css">
+      body
+      {
+        background-color: #171717;
+      }
+      div#loading-div
+      {
+        text-align:center;
+      }
+
+      div#search-form
+      {
+        margin-bottom: 30px;
+      }
+
+      h1#total-results
+      {
+        text-align:center; 
+        color:white;
+      }
+
+      nav#paginator
+      {
+        margin: 0px auto;
+      }
+
+      ul.pagination > li
+      {
+        cursor: pointer;
+      }
+
+      div#container
+      {
+        margin-top: 100px;
+      }
+
+      div.movie
+      {
+        color: white;
+        font-family: "Lato", sans-serif;
+        font-style: italic;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      div.movie:hover > img
+      {
+        box-shadow: 0px 0px 10px #0096ff;
+      }
+
+      div.movie > img
+      {
+        margin: 0px auto;
+        transition: box-shadow 0.2s;
+      }
+
+      div.movie > p
+      {
+        text-align: center;
+      }
+
+      span.movie-genre
+      {
+        margin-right: 5px;
+      }
+        
+      h2.title
+      {
+        color: #ffcc00
+      }
+
+      .rating, .cast, .searching
+      {
+        color:white; 
+        font-weight: bold;
+      }
+
+      p.description-full
+      {
+        color:white; 
+        margin-top: 20px;
+      }
+    </style>
+  </body>
+</html>

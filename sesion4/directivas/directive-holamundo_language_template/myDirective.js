@@ -1,7 +1,7 @@
 (function(myApp) {
 	function directive() {
 			return {
-				restrict:'E',
+				//restrict:'AE',
 				template:function(element,attrs){
 					if(attrs.language==='es'){
 						return '<div>Hola mundo</div>';

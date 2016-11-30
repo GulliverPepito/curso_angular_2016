@@ -14,7 +14,7 @@ uazonApp.config(
 			templateUrl:'src/views/nuevo-libro.html',
 			controller: 'LibrosFichaCtrl'
 		})
-		.when('/ficha-libro/:libroId',
+		.when('/ficha-libro/:tituloLibro',
 		{
 			templateUrl:'src/views/ficha-libro.html',
 			controller: 'LibrosFichaCtrl'

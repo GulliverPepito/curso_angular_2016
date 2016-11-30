@@ -16,27 +16,34 @@
     <form name="registrationForm" novalidate 
           ng-submit="registration.submit(registrationForm.$valid)">
        <div class="form-group">
+
+	<div ng-messages="registrationForm.username.$error">
+				<div ng-message="required">Campo user requerido<br/></div>
+	</div>
+
+	<div ng-messages="registrationForm.password.$error">
+				<div ng-message="required">Campo password requerido<br/></div>
+	</div>
+
+	<div ng-messages="registrationForm.confirmPassword.$error">
+				<div ng-message="compareTo">Validar password.Deben coincidir las password<br/></div>
+	</div>
+
+
             <label>User Name</label>
             <input type="text" name="username" class="form-control" ng-model="registration.user.username" required />
-            <div ng-messages="registrationForm.username.$error">
-				<div ng-message="required">Campo user requerido<br/></div>
-			</div>
+            
         </div>
         <div class="form-group">
             <label>Password</label>
             <input type="password" name="password" class="form-control" ng-model="registration.user.password" required />
-            <div ng-messages="registrationForm.password.$error">
-				<div ng-message="required">Campo password requerido<br/></div>
-			</div>
+            
         </div>
         <div class="form-group">
             <label>Confirm Password</label>
             <input type="password" name="confirmPassword" class="form-control" 
                    ng-model="registration.user.confirmPassword" 
                    required compare-to="registration.user.password" />
-            <div ng-messages="registrationForm.confirmPassword.$error">
-				<div ng-message="compareTo">Validar password.Deben coincidir las password<br/></div>
-			</div>
         </div>
 		
         <div class="form-group">

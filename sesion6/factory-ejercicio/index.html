@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="http://code.ionicframework.com/1.0.0-rc.3/css/ionic.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="app.js"></script>
+</head>
+
+<body ng-app="miAplic">
+
+<div class="list list-inset">
+
+<div class="item item-divider">
+Personalizar su post
+</div>
+
+<div class="list">
+
+<div class="item item-input-inset" ng-controller="ControladorTitulo">
+<label class="item-input-wrapper">
+<input type="text" placeholder="Titulo" ng-model="tituloMensaje">
+</label>
+<button class="button button-assertive" ng-click="titulo()">guardar</button>
+</div>
+
+<div class="item item-input-inset" ng-controller="ControladorFecha">
+<label class="item-input-wrapper">
+<input type="text" placeholder="Fecha" ng-model="fechaMensaje">
+</label>
+<button class="button button-assertive" ng-click="fecha()">guardar</button>
+</div>
+
+<div class="item item-input-inset" ng-controller="ControladorContenido">
+<label class="item-input-wrapper">
+<input type="text" placeholder="Contenido" ng-model="contenidoMensaje">
+</label>
+<button class="button button-assertive" ng-click="contenido()">guardar</button>
+</div>
+
+</div>
+
+<div class="item item-divider" ng-controller="ControladorReset">
+<button class="button button-block button-assertive" ng-click="reset()">resetea su post</button>
+</div>
+
+</div>
+
+<div class="list card" >
+
+<div class="item item-avatar" >
+<h2 ng-controller="ControladorTitulo">{{dato.titulo}}</h2>
+<p ng-controller="ControladorFecha">{{dato.fecha}}</p>
+</div>
+
+<div class="item item-body" ng-controller="ControladorContenido">
+<p>{{dato.contenido}}</p>
+<p>
+<a href="#" class="subdued">1 like</a>
+<a href="#" class="subdued">5 comments</a>
+</p>
+</div>
+
+</div>
+
+</body>
+</html>

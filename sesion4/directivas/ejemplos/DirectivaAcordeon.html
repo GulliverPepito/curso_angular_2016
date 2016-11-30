@@ -1,0 +1,90 @@
+<html ng-app="MiApp">
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<style>
+.group h1 {
+	background-color: black;
+	font-size: 18px;
+	margin: 0;
+	border-bottom: 1px solid white;
+}
+.group a, .group a:hover {
+	color: white;
+	text-decoration: none;
+	text-align: center;
+}
+.group div {
+	margin-top: -1px;
+}
+</style>
+  </head>
+
+  <body ng-controller="MiControlador">
+    <accordion>
+	<accordion-group accordion-title="Titulo 1">
+Descripcion 1
+	</accordion-group>
+	<accordion-group accordion-title="Titulo 2">
+Descripcion 2
+	</accordion-group>
+	<accordion-group accordion-title="Titulo 3">
+Descripcion 3
+	</accordion-group>
+</accordion>
+	
+	<script type="text/javascript">
+    var module = angular.module('MiApp', []);
+    
+	module.controller("MiControlador", function() {
+	});
+	
+    module.directive("accordion", function() {
+		return {
+			restrict: "E",
+			transclude: true,
+			replace: true,
+			scope: {},
+			template: "<div class='accordion' ng-transclude></div>",
+			controller: function() {
+				var accordionGroups = [];
+				
+				this.registerGroup = function(group) {
+					accordionGroups.push(group);
+				};
+				
+				this.toggleGroup = function(selectedGroup) {
+					angular.forEach(accordionGroups, function(group) {
+						if(group != selectedGroup) {
+							group.visible = false;
+						}
+					});
+				};
+			}
+		};
+	});
+	
+	module.directive("accordionGroup", function() {
+		return {
+			restrict: "E",
+			transclude: true,
+			template: "<div class='group'><a href ng-click='toggle()'><h1>{{title}}</h1></a><div ng-show='visible' ng-transclude></div></div>",
+			require: "^accordion",
+			replace: true,
+			scope: {
+				title: "@accordionTitle"
+			},
+			link: function(scope, element, attrs, accordionController) {
+				accordionController.registerGroup(scope);
+				
+				scope.visible = false;
+				
+				scope.toggle = function() {
+					scope.visible = !scope.visible;
+					accordionController.toggleGroup(scope);
+				}
+			}
+		};
+	});
+  </script>
+  </body>
+</html>

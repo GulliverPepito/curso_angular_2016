@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp" data-ng-csp="">
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-csp.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css">
+</head>
+
+  <body>
+
+    <div ng-controller='myAppController'>
+      <button ng-click='toggleModal()'>Open Modal Dialog 1</button>
+      <modal-dialog show='modalShown' 
+                    width='95' 
+                    height='95' 
+                    modal-user="user" 
+                    save-user="saveUser(user)"
+                    template-user="my-customer.html">
+      </modal-dialog>
+      <button ng-click='toggleModal2()'>Open Modal Dialog 2</button>
+      <modal-dialog show='modalShown2' 
+                    width='50' 
+                    height='50' 
+                    modal-user="user" 
+                    save-user="saveUser(user)"
+                    template-user="my-customer2.html">
+      </modal-dialog>
+      <div>
+        <label>PIN Code:</label>
+        <input type="text" ng-model="user.shortKey" />
+      </div>
+    </div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+
+</html>

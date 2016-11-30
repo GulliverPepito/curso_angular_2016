@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>Logica AngularJS</title>
+  </head>
+  <body ng-app="myModule" ng-controller="myController">
+	<ul>
+		<li ng-repeat="item in model">
+			<span>framework:{{item.frameworkId}}- {{item.name}}</span>
+		</li>
+	</ul>
+	<!-- Include the core AngularJS library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="app.js"></script>
+	<script src="myController.js"></script>
+	<script src="frameworkService.js"></script>
+	<script src="frameworkProvider.js"></script>
+	<script src="config.js"></script>
+  </body>
+ </html>

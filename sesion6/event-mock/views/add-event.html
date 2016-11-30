@@ -1,0 +1,82 @@
+<div class="row">
+	<div class="col-md-6 col-sm-8 col-lg-6">
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading"><h3>Add event</h3></div>
+		<div class="panel-body">
+			<form class="form" role="form" ng-submit="addEventForm.$valid && eventController.submitForm(eventForm)" id="addEventForm" name="addEventForm">
+			
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<label for="eventName" class="control-label">Name</label>
+					<input type="text" ng-model="eventForm.name" class="form-control" name="eventName" placeholder="eventName" required />
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<label for="eventDescription" class="control-label">Description</label>
+					<input type="text" ng-model="eventForm.description" class="form-control" name="eventDescription" required placeholder="eventDescription" />
+					<p class="help-block" ng-show="addEventForm.$dirty && addEventForm.eventDescription.$invalid">
+					Please enter and event description</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<label for="eventDate" class="control-label">Date</label>
+					<input type="date" ng-model="eventForm.date" class="form-control" name="eventDate" placeholder="yyyy-MM-dd" />
+					<p class="help-block" ng-show="addEventForm.$dirty && addEventForm.eventDate.$invalid">
+					Please enter date in format yyyy-mm-dd</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<label for="eventLocation" class="control-label">Location</label>
+					<input type="text" ng-model="eventForm.location" class="form-control" name="eventLocation" placeholder="eventLocation" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<label for="eventDate" class="control-label">Category</label>
+					<select ng-model="eventForm.category" data-with="100%" class="form-control" name="eventCategory" placeholder="eventCategory">
+					</select>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<label for="eventEmail" class="control-label">Email</label>
+					<input type="email" ng-model="eventForm.email" class="form-control" name="eventEmail" placeholder="eventEmail" />
+					</div>
+				</div>
+				
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<label for="eventSpecial" class="control-label">Special</label>
+					<input type="checkbox" ng-model="eventForm.special" class="form-control" name="eventSpecial" />
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<div class="form-group">
+					<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+					<button type="button" class="btn btn-primary" ng-click="eventController.redirectEventList()">Event List</button>
+				</div>
+			</div>
+
+			</form>
+		</div>
+	</div>
+	</div>
+</div>	

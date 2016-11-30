@@ -1,0 +1,13 @@
+<section class="bookinfo">
+  <div class="book cf" ng-model="books">
+    <a href="/details/{{prevItem}}" class="btn btn-left">&lt;</a>
+    <a href="/details/{{nextItem}}" class="btn btn-right">&gt;</a>
+    <h1>{{books[bookItem].name}}</h1>
+    <div class="info">
+      Editorial : {{books[bookItem].editorial}}
+      <img ng-src="../images/{{books[bookItem].image}}" alt="Image of {{books[bookItem].name}}">
+      <div class="bio"><h3>{{books[bookItem].description}}</h3></div>
+    </div>
+  </div>
+  <a href="/list">&laquo; Back to search</a>
+</section>

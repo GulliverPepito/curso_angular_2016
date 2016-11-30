@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Document</title>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+	<select ng-model="model.name" ng-options="item.name as item.name for item in collection" 
+	ng-change="changeUser(model)"></select>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+	<script src="myApp.js"></script>
+	<script src="myController.js"></script>
+	<script src="myService.js"></script>
+</body>
+</html>
