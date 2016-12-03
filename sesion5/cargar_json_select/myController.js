@@ -2,7 +2,8 @@
 	controller.$inject=["myService","$scope"];
 	function controller(myService,$scope) {
 		
-		myService.getData().success(function(data) {
+		var param='param';
+		myService.getData(param).success(function(data) {
 			$scope.collection=data;
 			$scope.collection.splice(0,0,{"id":"0","name":"Select user"});
 			$scope.model=$scope.model||{};

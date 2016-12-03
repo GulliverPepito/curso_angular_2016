@@ -20,10 +20,10 @@
                     </button>
                     <button class="btn btn-xs btn-primary"
                             ng-click="editOrCreateProduct(item)">
-                        Edit
+                        Editt
                     </button>
-                    <increment item="item" property-name="price" restful="true"
-                               method-name="$save" />
+                    <increment item="item" property-name="price"/>
+		    <change-category item="item" property-name="category" />
                 </td>
             </tr>
         </tbody>

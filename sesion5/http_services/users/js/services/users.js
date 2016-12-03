@@ -1,5 +1,5 @@
 app.factory('users', ['$http', function($http) {
-	return $http.get('http://jsonplaceholder.typicode.com/users')
+	return $http.get('http://jsonplaceholder.typicode.com/userss')
 			.success(function(data){
 				return data;
 			})

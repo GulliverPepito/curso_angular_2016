@@ -1,0 +1,4 @@
+﻿[{ "name": "John", "email": "john@gmail.com", "faculty": "sciences" },
+{ "name": "Alfred", "email": "alfred@gmail.com", "faculty": "medicine" },
+{ "name": "Peter", "email": "peter@gmail.com", "faculty": "architecture"}
+]

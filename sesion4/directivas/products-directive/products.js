@@ -1,4 +1,4 @@
-﻿angular.module("exampleApp", ["incrementDirective", "ngResource"])
+﻿angular.module("exampleApp", ["incrementDirective","changeCategoryDirective", "ngResource"])
 .controller("defaultCtrl", function ($scope, $http, $resource) {
 
     $scope.displayMode = "list";
