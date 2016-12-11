@@ -1,7 +1,7 @@
 # curso_angular_2016
 documentacion curso_angular_2016
 
-https://github.com/jmortega/curso_angular_2016/blob/master/otros_proyectos/images/address_book.png
+<img src="https://github.com/jmortega/curso_angular_2016/blob/master/otros_proyectos/images/address_book.png" />
 
 https://github.com/jmortega/curso_angular_2016/blob/master/otros_proyectos/images/agendaJS.png
 
