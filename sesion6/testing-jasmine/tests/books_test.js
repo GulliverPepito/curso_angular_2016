@@ -11,7 +11,7 @@ describe('Modulo app.books', function () {
         var booksService;
 
         beforeEach(function () {
-            inject(['BooksService', function (service) {
+            inject(['BooksService',function (service) {
                     booksService = service;
                 }
             ]);

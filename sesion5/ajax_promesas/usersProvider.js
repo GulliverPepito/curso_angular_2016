@@ -5,8 +5,9 @@
 			return {
 				getData: function() {
 					var users=$http.get('data.json');
-					
-					return $q.all([users]).then(function(result){
+					var users2=$http.get('data.json');
+
+					return $q.all([users,users2]).then(function(result){
 						var users=[];
 
 						angular.forEach(result,function(response){

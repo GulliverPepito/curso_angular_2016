@@ -21,7 +21,7 @@ angular.module('eventApp')
 		return [200,{'addEventResult':true},{}]
 	});
 	
-	$httpBackend.whenPOST('update-event').respond(function(method,url,data){
+	$httpBackend.whenPUT('update-event').respond(function(method,url,data){
 		var event =angular.fromJson(data);
 		for(i=0;i<events.length;i++){
 			if(events[i].id==event.id){
@@ -32,11 +32,15 @@ angular.module('eventApp')
 		return [200,{'events':events},{}]
 	});
 	
-	$httpBackend.whenPOST('delete-event').respond(function(method,url,data){
-		var eventToDelete =angular.fromJson(data);
-		eventToDelete.id=events.length+1;
+	$httpBackend.whenDELETE(/delete\/.*/).respond(function(method,url,data,headers,params){
+		console.log('method'+method);
+		console.log('url'+url);	
+		var name=url.split("/")[1];
+		
+		//var eventToDelete =angular.fromJson(data);		
+		//eventToDelete.id=events.length+1;
 		for(i=0;i<events.length;i++){
-			if(events[i].name==eventToDelete.name){
+			if(events[i].name==name){
 				events.splice(i,1);
 			}
 		};

@@ -31,7 +31,8 @@ angular.module('eventApp')
 	
 	eventFactory.deleteEvent=function(event){
 		var deferred=$q.defer();
-		$http.post('delete-event',event).then(function(response){
+		console.log('event-name'+event.name);
+		$http.delete('delete/'+event.name).then(function(response){
 			deferred.resolve(response.data);
 			console.log('eventFactory.deleteEvent',response.data);
 		},function(error){
@@ -44,7 +45,7 @@ angular.module('eventApp')
 	
 	eventFactory.updateEvent=function(event){
 		var deferred=$q.defer();
-		$http.post('update-event',event).then(function(response){
+		$http.put('update-event',event).then(function(response){
 			deferred.resolve(response.data.events);
 			console.log('eventFactory.getAllEvents',response.data);
 		},function(error){

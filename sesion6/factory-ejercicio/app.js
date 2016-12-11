@@ -1,13 +1,14 @@
 var miAplic = angular.module("miAplic",[]);
 miAplic.factory("post", function(){
+
 var servicio = {
 objeto: {titulo: "Escribe el TITULO",
 fecha:"Escribe la FECHA",
 contenido:"Escribe el CONTENIDO"},
 mensajeInicial: function(){
-servicio.objeto["titulo"] = "Escribe el TITULO";
-servicio.objeto["fecha"] = "Escribe la FECHA";
-servicio.objeto["contenido"] = "Escribe el CONTENIDO";
+this.objeto["titulo"] = "Escribe el TITULO";
+this.objeto["fecha"] = "Escribe la FECHA";
+this.objeto["contenido"] = "Escribe el CONTENIDO";
 },
 tituloNuevo: function(msj){
 servicio.objeto.titulo = msj;
@@ -21,6 +22,7 @@ servicio.objeto.contenido = msj;
 };
 return servicio;
 });
+
 
 miAplic.controller("ControladorTitulo",
 function($scope,post){
@@ -48,6 +50,7 @@ post.contenidoNuevo($scope.contenidoMensaje);
 };
 $scope.dato = post.objeto;
 });
+
 miAplic.controller("ControladorReset",
 function($scope,post){
 $scope.reset = function(){

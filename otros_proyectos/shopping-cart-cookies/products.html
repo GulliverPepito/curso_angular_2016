@@ -1,0 +1,34 @@
+<div style="margin-top:20px;margin-left:20px;">
+  <table class="table forum table-striped">
+    <thead>
+      <tr>
+        <th>
+        </th>
+        <th class="cell-stat text-center ">Product</th>
+        <th class="cell-stat text-center ">Price</th>
+        <th class="cell-stat-2x ">Brand</th>
+		<th class="cell-stat-2x ">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="product in products">
+        <td>
+          <h4>
+                <a href="#/details/{{product.id}}">{{product.name}}</a>
+                <br />
+                <small>{{product.price}}</small>
+              </h4>
+        </td>
+        <td class="text-center ">
+          <a href="#">{{product.price}}</a>
+        </td>
+        <td class="text-center ">
+          <a href="#">{{product.rating}}</a>
+        </td>
+		<td class="text-center ">
+			<button ng-click="addToCart(product)">Añadir a la cesta</button>
+		</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

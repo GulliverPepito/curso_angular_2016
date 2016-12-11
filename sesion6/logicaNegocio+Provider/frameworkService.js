@@ -1,7 +1,6 @@
 (function(myModule){
 	function service($http,$q,frameworkProvider){
 		this.getAll=function(){
-			var path='frameworks.json';
 			var promise = frameworkProvider.getAll().then(
 				function(response){
 					return response.data;

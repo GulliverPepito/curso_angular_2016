@@ -1,5 +1,5 @@
 (function(myApp){
-	function service($http,$q,usersProvider){
+	function service(usersProvider){
 		this.getData=function(){
 			//return usersProvider.getData();
 			var promise = usersProvider.getData().then(
